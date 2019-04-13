@@ -22,8 +22,10 @@ RUN mkdir /src && \
  make -f makefile.ubuntu && \
  mkdir -p /yacoin && \
  mkdir -p /yacoin/data && \
- cp /src/yacoin/src/yacoind /yacoin
+ cp /src/yacoin/src/yacoind /yacoin && \
+ cd / && \
+ rm -rf /src
  
 WORKDIR "/yacoin"
 
-CMD ["yacoind","-datadir=/yacoin/data/","-conf=/yacoin/yacoin.conf"]
+CMD ["./yacoind","-datadir=/yacoin/data/","-conf=/yacoin/data/yacoin.conf"]
